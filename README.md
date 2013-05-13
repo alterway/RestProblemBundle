@@ -55,12 +55,19 @@ public function demoAction(Request $request)
 
 Remember to enable annotations :
 
-    sensio_framework_extra:
-    router:  { annotations: true }
-    request: { converters: true }
-    view:    { annotations: true }
-    cache:   { annotations: true }
+```json
+sensio_framework_extra:
+router:  { annotations: true }
+request: { converters: true }
+view:    { annotations: true }
+cache:   { annotations: true }
+```
 
+And to register the autoloader in your `app/autoload.php` file:
+
+```php
+Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(array($loader, 'loadClass')); 
+```
 
 This will send an `application/api-problem+json` header:
 

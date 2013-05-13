@@ -18,10 +18,6 @@ class ProblemListener
         $this->reader = $reader;
     }
 
-    public function onKernelController(\Symfony\Component\HttpKernel\Event\FilterControllerEvent $event)
-    {
-        class_exists('\Alterway\Bundle\RestProblemBundle\Controller\Annotations\Problem');
-    }
 
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
