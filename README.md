@@ -32,27 +32,7 @@ public function registerBundles()
     );
 }
 ```
-
 ## Usage
-
-
-```php
-use Alterway\Bundle\RestProblemBundle\Response\ProblemResponse;
-use Alterway\Bundle\RestProblemBundle\Problem;
-
-public function demoAction(Request $request)
-{
-
-    $form = // (...)
-
-    $form->bind($request);
-    if (!$form->isValid()) {
-        return new Problem\InvalidQueryForm($form);
-    }
-}
-```
-
-Or
 
 ```php
 use Alterway\Bundle\RestProblemBundle\Response\ProblemResponse;
@@ -67,6 +47,38 @@ public function demoAction(Request $request)
     if (!$form->isValid()) {
         $problem = new Problem\InvalidQueryForm($form);
         return new ProblemResponse($problem, 403);
+    }
+}
+```
+
+## Usage with annotations
+
+Remember to enable annotations :
+
+    sensio_framework_extra:
+    router:  { annotations: true }
+    request: { converters: true }
+    view:    { annotations: true }
+    cache:   { annotations: true }
+
+
+This will send an `application/api-problem+json` header:
+
+```php
+use Alterway\Bundle\RestProblemBundle\Response\ProblemResponse;
+use Alterway\Bundle\RestProblemBundle\Controller\Annotations\Problem;
+
+/**
+* @Problem
+*/
+public function demoAction(Request $request)
+{
+
+    $form = // (...)
+
+    $form->bind($request);
+    if (!$form->isValid()) {
+        return new Problem\InvalidQueryForm($form);
     }
 }
 ```

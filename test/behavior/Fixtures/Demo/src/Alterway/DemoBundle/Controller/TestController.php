@@ -2,13 +2,14 @@
 
 namespace Alterway\DemoBundle\Controller;
 
-use Alterway\Bundle\RestProblemBundle\Problem;
+use Alterway\Bundle\RestProblemBundle\Controller\Annotations\Problem;
 use Alterway\Bundle\RestProblemBundle\Response\ProblemResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
+use Alterway\Bundle\RestProblemBundle\Problem\InvalidQueryForm;
 
 class TestController extends Controller
 {
@@ -34,7 +35,7 @@ class TestController extends Controller
 
         $form->bind($request);
         if (!$form->isValid()) {
-            $problem = new Problem\InvalidQueryForm($form);
+            $problem = new InvalidQueryForm($form);
 
             // or
             // $problem = new Problem\InvalidQuery($form->getErrors());
@@ -43,6 +44,9 @@ class TestController extends Controller
         }
     }
 
+    /**
+     * @Problem
+     */
     public function directProblemAction(Request $request)
     {
 
@@ -64,7 +68,7 @@ class TestController extends Controller
         // start here
         $form->bind($request);
         if (!$form->isValid()) {
-            return new Problem\InvalidQueryForm($form);
+            return new InvalidQueryForm($form);
         }
     }
 

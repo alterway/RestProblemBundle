@@ -18,12 +18,20 @@ class ProblemListener
         $this->reader = $reader;
     }
 
+    public function onKernelController(\Symfony\Component\HttpKernel\Event\FilterControllerEvent $event)
+    {
+        class_exists('\Alterway\Bundle\RestProblemBundle\Controller\Annotations\Problem');
+    }
+
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
 
         $request = $event->getRequest();
         $resource = $event->getControllerResult();
-
+        
+        if(null ===$request->get('_rest_problem')) {
+            return;
+        }
         if ($request->getRequestFormat() != 'json') {
             return;
         }
@@ -32,7 +40,7 @@ class ProblemListener
         }
 
         $headers = array('Content-type' => 'application/api-problem+json');
-        $response = new ProblemResponse($resource,400, $headers );
+        $response = new ProblemResponse($resource, 400, $headers);
         $event->setResponse($response);
     }
 
