@@ -111,7 +111,7 @@ Copyright (c) 2013 Jean-François Lépine (Halleck45). See LICENSE for details.
 
 ##  Contributors
 
-+ Jean-François Lépine (Problemleck45)
++ Jean-François Lépine (Halleck45)
 
 ## Sponsors
 
