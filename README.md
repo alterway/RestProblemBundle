@@ -37,7 +37,10 @@ public function registerBundles()
 
 
 ```php
-public function demo(Request $request)
+use Alterway\Bundle\RestProblemBundle\Response\ProblemResponse;
+use Alterway\Bundle\RestProblemBundle\Problem;
+
+public function demoAction(Request $request)
 {
 
     $form = // (...)
