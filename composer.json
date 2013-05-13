@@ -1,0 +1,28 @@
+{
+    "name": "alterway/rest-problem-bundle",
+    "description": "way to respect Problem Details for HTTP APIs RFC (http://tools.ietf.org/html/draft-nottingham-http-problem-03)",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "Alterway\\Bundle\\RestProblemBundle": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.2.*",
+        "sensio/framework-extra-bundle": "2.2.*"
+    },
+    "require-dev": {
+        "behat/behat": ">=2.2.2",
+        "kriswallsmith/buzz": ">=0.5",
+        "phpunit/phpunit": "3.7.*",
+        "behat/symfony2-extension": "*@stable",
+        "behat/mink-extension": "*",
+        "behat/mink-browserkit-driver": "*",
+        "behat/sahi-client": "v1.0.1",
+        "behat/mink-sahi-driver": "*",
+        "behat/gherkin": "@dev"
+    },
+    "minimum-stability": "dev"
+}

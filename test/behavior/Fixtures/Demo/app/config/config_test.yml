@@ -1,0 +1,31 @@
+framework:
+    secret: $3cr3t
+    router: { resource: "%kernel.root_dir%/config/routing_test.yml" }
+    form: true
+    csrf_protection: false
+    validation: { enable_annotations: true }
+    templating: { engines: ['twig'] }
+    profiler: { only_exceptions: false }
+    test: ~
+    session:
+        storage_id: session.storage.filesystem
+    translator: { fallback: fr }
+
+twig:
+    debug: %kernel.debug%
+    strict_variables: %kernel.debug%
+    cache: false
+
+sensio_framework_extra:
+    router:  { annotations: true }
+    request: { converters: true }
+    view:    { annotations: true }
+    cache:   { annotations: true }
+
+
+# Assetic Configuration
+#assetic:
+#    debug: %kernel.debug%
+#    use_controller: false
+#    filters:
+#        cssrewrite: ~

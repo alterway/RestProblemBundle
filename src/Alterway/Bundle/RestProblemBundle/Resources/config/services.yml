@@ -1,0 +1,10 @@
+parameters:
+  aw.rest_problem.listener.class: Alterway\Bundle\RestProblemBundle\EventListener\ProblemListener
+
+services:
+  aw.rest_problem.listener:
+    class: %aw.rest_problem.listener.class%
+    arguments: [@annotation_reader]
+    tags:
+      - { name: kernel.event_listener, event: kernel.view, method: onKernelView }
+      - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }

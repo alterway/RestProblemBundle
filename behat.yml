@@ -1,0 +1,12 @@
+default:
+  formatter:
+    name: pretty
+  extensions:
+    Behat\Symfony2Extension\Extension:
+      mink_driver: true
+      kernel:
+        env: test
+        debug: true
+        path: test/behavior/Fixtures/Demo/app/AppKernel.php
+    Behat\MinkExtension\Extension:
+      default_session: 'symfony2'
