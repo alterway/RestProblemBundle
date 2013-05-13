@@ -1,8 +1,8 @@
+demo.direct:
+  pattern:   /user/edit/direct
+  defaults:  { _controller: AlterwayDemoBundle:Test:directProblem, _format: json }
+  
 demo.user:
   pattern:   /user/edit/{id}
   defaults:  { _controller: AlterwayDemoBundle:Test:userWithoutAnnotate, _format: json }
-
-demo.user.annotate:
-  pattern:   /user/edit/annotate/{id}
-  defaults:  { _controller: AlterwayDemoBundle:Test:userWithAnnotate, _format: json }
   

@@ -47,6 +47,24 @@ public function demoAction(Request $request)
 
     $form->bind($request);
     if (!$form->isValid()) {
+        return new Problem\InvalidQueryForm($form);
+    }
+}
+```
+
+Or
+
+```php
+use Alterway\Bundle\RestProblemBundle\Response\ProblemResponse;
+use Alterway\Bundle\RestProblemBundle\Problem;
+
+public function demoAction(Request $request)
+{
+
+    $form = // (...)
+
+    $form->bind($request);
+    if (!$form->isValid()) {
         $problem = new Problem\InvalidQueryForm($form);
         return new ProblemResponse($problem, 403);
     }
