@@ -16,7 +16,7 @@ class ProblemResponse extends JsonResponse
             , 'detail' => $problem->getDetail()
         );
 
-        if (null !== $status) {
+        if (null === $status) {
             $status = $problem->getHttpStatus();
         }
 
