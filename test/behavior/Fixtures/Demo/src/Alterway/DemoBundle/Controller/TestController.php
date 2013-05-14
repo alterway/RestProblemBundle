@@ -40,7 +40,7 @@ class TestController extends Controller
             // or
             // $problem = new Problem\InvalidQuery($form->getErrors());
 
-            return new ProblemResponse($problem, 403);
+            return new ProblemResponse($problem);
         }
     }
 
