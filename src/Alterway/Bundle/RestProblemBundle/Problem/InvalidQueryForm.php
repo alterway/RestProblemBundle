@@ -27,7 +27,6 @@ class InvalidQueryForm extends Problem
             }
         }
 
-        $this->uri = "/query/invalid";
         $this->title = "Invalid query";
         $this->detail = $errors;
         $this->httpStatus = 400;

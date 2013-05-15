@@ -3,6 +3,8 @@
 namespace Alterway\Bundle\RestProblemBundle\Features\Context;
 
 use Behat\Behat\Context\BehatContext;
+use Behat\Behat\Context\Step\Given;
+use Behat\Behat\Context\Step\When;
 use Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
@@ -51,16 +53,26 @@ class FeatureContext extends BehatContext implements KernelAwareInterface
      */
     public function iSendARequestToWith($type, $uri, TableNode $post)
     {
-        
+
         $fields = array();
         foreach ($post->getRowsHash() as $key => $val) {
             $fields[$key] = $val;
         }
-        
+
         $driver = $this->getSubContext('mink')->getSession()->getDriver();
         $client = $driver->getClient();
         $this->response = $client->request($type, $uri, $fields);
     }
-    
+
+    /**
+     * @When /^I send a ([^"]*) request to "([^"]*)"$/
+     */
+    public function iSendAGetRequestTo($type, $uri)
+    {
+        return array(
+            new When(sprintf('I send a %s request to "%s" with:', $type, $uri), new TableNode())
+        );
+
+    }
 
 }

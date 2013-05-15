@@ -72,4 +72,9 @@ class TestController extends Controller
         }
     }
 
+    public function exceptionProblemAction()
+    {
+        throw new \Exception('Something went wrong!');
+    }
+
 }

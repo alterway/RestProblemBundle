@@ -110,7 +110,7 @@ Install dev dependencies:
 
 Run Behat:
 
-    ./vendor/bin/behat @AwProblemRestBundle
+    ./vendor/bin/behat @AwRestProblemBundle
 
 ## Copyright
 
