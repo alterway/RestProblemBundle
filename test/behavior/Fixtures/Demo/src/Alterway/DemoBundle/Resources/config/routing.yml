@@ -6,3 +6,6 @@ demo.user:
   pattern:   /user/edit/{id}
   defaults:  { _controller: AlterwayDemoBundle:Test:userWithoutAnnotate, _format: json }
   
+demo.exception:
+  pattern:   /exception
+  defaults:  { _controller: AlterwayDemoBundle:Test:exceptionProblem, _format: json }

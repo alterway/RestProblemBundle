@@ -1,5 +1,6 @@
 parameters:
   aw.rest_problem.listener.class: Alterway\Bundle\RestProblemBundle\EventListener\ProblemListener
+  aw.rest_exception.listener.class: Alterway\Bundle\RestProblemBundle\EventListener\ExceptionListener
 
 services:
   aw.rest_problem.listener:
@@ -8,3 +9,9 @@ services:
     tags:
       - { name: kernel.event_listener, event: kernel.view, method: onKernelView }
       - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+  aw.rest_exception.listener:
+    class: %aw.rest_exception.listener.class%
+    arguments: [@annotation_reader]
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
