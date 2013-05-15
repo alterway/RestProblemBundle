@@ -8,6 +8,13 @@ use Doctrine\Common\Annotations\Reader;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
+/*
+ * (c) 2013 La Ruche Qui Dit Oui!
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 class ProblemListener
 {
 
