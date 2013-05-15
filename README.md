@@ -119,6 +119,7 @@ Copyright (c) 2013 La Ruche Qui Dit Oui!. See LICENSE for details.
 ##  Contributors
 
 + Lead: Jean-François Lépine (Halleck45)
++ Developer: Antoine Lévêque (gh0stonio)
 
 ## Sponsors
 
