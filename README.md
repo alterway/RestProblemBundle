@@ -55,12 +55,19 @@ public function demoAction(Request $request)
 
 Remember to enable annotations :
 
-    sensio_framework_extra:
-    router:  { annotations: true }
-    request: { converters: true }
-    view:    { annotations: true }
-    cache:   { annotations: true }
+```json
+sensio_framework_extra:
+router:  { annotations: true }
+request: { converters: true }
+view:    { annotations: true }
+cache:   { annotations: true }
+```
 
+And to register the autoloader in your `app/autoload.php` file:
+
+```php
+Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(array($loader, 'loadClass')); 
+```
 
 This will send an `application/api-problem+json` header:
 
@@ -107,11 +114,11 @@ Run Behat:
 
 ## Copyright
 
-Copyright (c) 2013 Jean-François Lépine (Halleck45). See LICENSE for details.
+Copyright (c) 2013 La Ruche Qui Dit Oui!. See LICENSE for details.
 
 ##  Contributors
 
-+ Jean-François Lépine (Halleck45)
++ Lead: Jean-François Lépine (Halleck45)
 
 ## Sponsors
 

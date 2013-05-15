@@ -3,6 +3,26 @@
     "description": "way to respect Problem Details for HTTP APIs RFC (http://tools.ietf.org/html/draft-nottingham-http-problem-03)",
     "type": "symfony-bundle",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "La Ruche Qui Dit Oui!",
+            "email": "contact@laruchequiditoui.fr",
+            "homepage": "http://www.laruchequiditoui.fr/",
+            "role": "Copyright Holder"
+        },
+        {
+            "name": "Alter Way",
+            "email": "contact@alterway.fr",
+            "homepage": "http://www.alterway.fr",
+            "role": "Developer"
+        },
+        {
+            "name": "Jean-François Lépine",
+            "email": "jean-francois.lepine@alterway.fr",
+            "homepage": "https://www.twitter.com/Halleck45",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-0": {
             "Alterway\\Bundle\\RestProblemBundle": "src/"

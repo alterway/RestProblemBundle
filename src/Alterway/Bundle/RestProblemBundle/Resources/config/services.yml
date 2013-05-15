@@ -8,7 +8,6 @@ services:
     arguments: [@annotation_reader]
     tags:
       - { name: kernel.event_listener, event: kernel.view, method: onKernelView }
-      - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
 
   aw.rest_exception.listener:
     class: %aw.rest_exception.listener.class%

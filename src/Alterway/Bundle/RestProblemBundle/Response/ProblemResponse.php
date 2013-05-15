@@ -5,6 +5,13 @@ namespace Alterway\Bundle\RestProblemBundle\Response;
 use Alterway\Bundle\RestProblemBundle\Problem\ProblemInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/*
+ * (c) 2013 La Ruche Qui Dit Oui!
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 class ProblemResponse extends JsonResponse
 {
 
