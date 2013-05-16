@@ -25,6 +25,10 @@ class InvalidQueryForm extends Problem
             foreach($childErrors as  $err) {
                 $errors[$key][] = $err->getMessage();
             }
+
+            if (empty($errors[$key])) {
+                unset($errors[$key]);
+            }
         }
 
         $this->title = "Invalid query";
