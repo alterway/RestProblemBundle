@@ -14,25 +14,30 @@ class InvalidQueryForm extends Problem
 
     public function __construct(\Symfony\Component\Form\FormInterface $form)
     {
+        $formErrors = array();
+        $formChildrenErrors = array();
 
-        $errors = $form->getErrors();
+        foreach ($form->getErrors() as $key => $error) {
+            $formErrors['generic'][$key] = $error->getMessage() . ' [parameters: ' . implode(', ', $error->getMessageParameters()) . ']';
+        }
+
         foreach ($form->all() as $key => $child) {
             if(!isset($errors[$key])) {
-                $errors[$key] = array();
-            }
-            
-            $childErrors = $child->getErrors();
-            foreach($childErrors as  $err) {
-                $errors[$key][] = $err->getMessage();
+                $formChildrenErrors[$key] = array();
             }
 
-            if (empty($errors[$key])) {
-                unset($errors[$key]);
+            $childErrors = $child->getErrors();
+            foreach($childErrors as  $err) {
+                $formChildrenErrors[$key][] = $err->getMessage();
+            }
+
+            if (empty($formChildrenErrors[$key])) {
+                unset($formChildrenErrors[$key]);
             }
         }
 
         $this->title = "Invalid query";
-        $this->detail = $errors;
+        $this->detail = array_merge($formErrors, $formChildrenErrors);
         $this->httpStatus = 400;
     }
 
