@@ -2,8 +2,6 @@
 
 namespace Alterway\Bundle\RestProblemBundle\Problem;
 
-use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
-
 class Exception extends Problem
 {
 
@@ -12,11 +10,10 @@ class Exception extends Problem
         $this->problemType = "/exception";
         $this->title = $exception->getMessage();
         $this->detail = $exception->getMessage();
+        $this->httpStatus = 500;
 
-        if ($exception instanceof HttpExceptionInterface) {
-            $this->httpStatus = $exception->getStatusCode();
-        } else {
-            $this->httpStatus = 500;
+        if ($exception instanceof \LogicException) {
+            $this->httpStatus = 400;
         }
     }
 }
