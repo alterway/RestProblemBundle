@@ -14,14 +14,14 @@ class Exception extends Problem
         $this->detail = $exception->getMessage();
 
         switch(true) {
+            case $exception instanceof HttpExceptionInterface;
+                $this->httpStatus = $exception->getStatusCode();
+                break;
             case $exception instanceof \LogicException:
                 $this->httpStatus = 400;
                 break;
             case $exception instanceof \RuntimeException:
                 $this->httpStatus = 500;
-                break;
-            case $exception instanceof HttpExceptionInterface;
-                $this->httpStatus = $exception->getStatusCode();
                 break;
             default:
                 $this->httpStatus = 501;
