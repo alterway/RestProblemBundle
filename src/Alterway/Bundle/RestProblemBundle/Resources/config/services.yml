@@ -11,6 +11,6 @@ services:
 
   aw.rest_exception.listener:
     class: %aw.rest_exception.listener.class%
-    arguments: [@annotation_reader]
+    arguments: [%kernel.debug%]
     tags:
       - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
