@@ -19,9 +19,6 @@ class ExceptionListener
 
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
-        $exception = $event->getException();
-        $problem = new Exception($exception, $debugMode);
-
-        $event->setResponse(new ProblemResponse($problem));
+        $event->setResponse(new ProblemResponse(new Exception($event->getException(), $this->debugMode)));
     }
 }
