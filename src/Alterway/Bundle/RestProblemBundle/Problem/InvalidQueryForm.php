@@ -16,9 +16,9 @@ class InvalidQueryForm extends Problem
     public function __construct(FormInterface $form)
     {
 
-        $this->title = "Invalid query";
+        $this->title = "Invalid query form";
         $this->detail = array(
-            'formErrors' => $this->buildErrorTree($form),
+            'errors' => $this->buildErrorsTree($form),
         );
         $this->httpStatus = 400;
     }
@@ -29,7 +29,7 @@ class InvalidQueryForm extends Problem
      *
      * @param FormInterface $form
      */
-    private function buildErrorTree($form) {
+    private function buildErrorsTree($form) {
         $errors = array();
 
         foreach ($form->getErrors() as $key => $error) {
@@ -37,7 +37,7 @@ class InvalidQueryForm extends Problem
         }
 
         foreach ($form->all() as $key => $child) {
-            if ($child instanceOf FormInterface && $err = $this->buildErrorTree($child)) {
+            if ($child instanceOf FormInterface && $err = $this->buildErrorsTree($child)) {
                 $errors[$key] = $err;
             }
         }
