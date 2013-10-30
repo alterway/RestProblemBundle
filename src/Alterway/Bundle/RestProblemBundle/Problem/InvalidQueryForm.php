@@ -2,6 +2,8 @@
 
 namespace Alterway\Bundle\RestProblemBundle\Problem;
 
+use Symfony\Component\Form\FormInterface;
+
 /*
  * (c) 2013 La Ruche Qui Dit Oui!
  *
@@ -11,34 +13,35 @@ namespace Alterway\Bundle\RestProblemBundle\Problem;
 
 class InvalidQueryForm extends Problem
 {
-
-    public function __construct(\Symfony\Component\Form\FormInterface $form)
+    public function __construct(FormInterface $form)
     {
-        $formErrors = array();
-        $formChildrenErrors = array();
 
-        foreach ($form->getErrors() as $key => $error) {
-            $formErrors['generic'][$key] = $error->getMessage() . ' [parameters: ' . implode(', ', $error->getMessageParameters()) . ']';
-        }
-
-        foreach ($form->all() as $key => $child) {
-            if(!isset($errors[$key])) {
-                $formChildrenErrors[$key] = array();
-            }
-
-            $childErrors = $child->getErrors();
-            foreach($childErrors as  $err) {
-                $formChildrenErrors[$key][] = $err->getMessage();
-            }
-
-            if (empty($formChildrenErrors[$key])) {
-                unset($formChildrenErrors[$key]);
-            }
-        }
-
-        $this->title = "Invalid query";
-        $this->detail = array_merge($formErrors, $formChildrenErrors);
+        $this->title = "Invalid query form";
+        $this->detail = array(
+            'errors' => $this->buildErrorsTree($form),
+        );
         $this->httpStatus = 400;
     }
 
+    /**
+     * Recursively builds a tree of form errors (including children errors).
+     * Based on Form::getErrorsAsString() : https://github.com/symfony/Form/blob/master/Form.php#L750
+     *
+     * @param FormInterface $form
+     */
+    private function buildErrorsTree($form) {
+        $errors = array();
+
+        foreach ($form->getErrors() as $key => $error) {
+            $errors[$key] = $error->getMessage();
+        }
+
+        foreach ($form->all() as $key => $child) {
+            if ($child instanceOf FormInterface && $err = $this->buildErrorsTree($child)) {
+                $errors[$key] = $err;
+            }
+        }
+
+        return $errors;
+    }
 }
