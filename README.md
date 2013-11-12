@@ -2,6 +2,8 @@
 
 Bundle to manage Problems in API with Symfony2.
 
+[![Build Status](http://travis-ci.org/alterway/RestProblemBundle.png)](http://travis-ci.org/alterway/RestProblemBundle)
+
 This bundle follows the [Problem Details for HTTP APIs](http://tools.ietf.org/html/draft-nottingham-http-problem-03) 
 recommandation.
 
