@@ -31,6 +31,6 @@ Feature: Basic request with errors
 
   Scenario: Catch logic exception with throw exception
     When I send a GET request to "/exception"
-    Then the response status code should be 500
+    Then the response status code should be 501
     Then the response should contain "/exception"
     Then the response should contain "Something went wrong!"

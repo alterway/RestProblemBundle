@@ -40,8 +40,6 @@
         "behat/symfony2-extension": "*@stable",
         "behat/mink-extension": "*",
         "behat/mink-browserkit-driver": "*",
-        "behat/sahi-client": "v1.0.1",
-        "behat/mink-sahi-driver": "*",
         "behat/gherkin": "@dev"
     },
     "minimum-stability": "dev"
