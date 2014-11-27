@@ -43,7 +43,7 @@ class ProblemListener
         }
 
         $headers = array('Content-type' => 'application/api-problem+json');
-        $response = new ProblemResponse($resource, 400, $headers);
+        $response = new ProblemResponse($resource, $resource->getHttpStatus(), $headers);
         $event->setResponse($response);
     }
 
